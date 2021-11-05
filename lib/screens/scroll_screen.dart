@@ -6,9 +6,27 @@ class ScrollScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: const [Background(), Texto()],
+      body: PageView(
+        scrollDirection: Axis.vertical,
+        children: const [
+          Screen1(),
+          Screen2(),
+          Screen1(),
+        ],
       ),
+    );
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  const Screen1({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: const [Background(), Texto()],
     );
   }
 }
@@ -55,5 +73,22 @@ class Background extends StatelessWidget {
             width: double.infinity,
             fit: BoxFit.fill,
             image: AssetImage('assets/fondo2.png')));
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  const Screen2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.lightBlue,
+      child: Center(
+        child: TextButton(
+            style: TextButton.styleFrom(backgroundColor: Colors.purple),
+            onPressed: () => {},
+            child: const Text('Boton', style: TextStyle(color: Colors.black))),
+      ),
+    );
   }
 }
